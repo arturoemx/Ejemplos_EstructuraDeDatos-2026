@@ -16,4 +16,4 @@ ejValSolución-F: ejValSolución-F.cpp
 	g++ $(CFLAGS) -o ejValSolución-F ejValSolución-F.cpp
 
 clean:
-	rm EjValoración ejValSolución-1  ejValSolución-2  ejValSolución-3 ejValSolución-F
+	rm ejValSolución-1  ejValSolución-2  ejValSolución-3 ejValSolución-F

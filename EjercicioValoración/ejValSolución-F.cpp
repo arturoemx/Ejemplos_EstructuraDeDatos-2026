@@ -9,10 +9,10 @@ void imprimeArregloInt(unsigned int *A, unsigned int n, string varName)
 {
 	unsigned int i;
 
-	cout << varName << "[";
+	cout << varName << "[" << n << "] = {";
 	for (i = 0; i < n-1; ++i)
 		cout << A[i] << ", ";
-	cout << A[i] << "]" << endl;
+	cout << A[i] << "};" << endl;
 }
 
 void invierteArreglo1(unsigned int *A, unsigned int n)
@@ -96,21 +96,22 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		cout << "Faltan argumentos:" << endl << endl;
-		cout << "Uso:" << endl << endl
-		     << "   " << argv[0] << " n Modo" << endl << endl
+		cout << "Uso: " << argv[0] << " n Modo [o]" << endl << endl
 		     << "Donde:" << endl << endl
-		     << "   n -> Tamaño del arreglo a invertir." << endl << endl
+		     << "   n    -> Tamaño del arreglo a invertir." << endl << endl
 		     << "   Modo -> Tipo de método a usar:" << endl << endl
-		     << "      1: Doble copia: copia el arreglo a otro arreglo de manera invertida" << endl
-		     << "         y luego lo copia de regreso." << endl << endl
-		     << "      2: SWAP: recorre la mitad del arreglo desde ambos extremos intercambiando" << endl
-		     << "         valores." << endl << endl
-		     << "      3: SWAP XOR: igual que el método SWAP pero usando operador xor para" << endl
-		     << "         intercambiar valores." << endl << endl
-		     << "Tras la ejecución se imprime en pantalla el tiempo requerido para ejecutar" << endl
-		     << "un programa"
-		     << endl << endl;
+		     << "           1: Doble copia: copia el arreglo a otro arreglo de manera invertida" << endl
+		     << "              y luego lo copia de regreso." << endl << endl
+		     << "           2: SWAP: recorre la mitad del arreglo desde ambos extremos intercam-" << endl
+		     << "              biando valores." << endl << endl
+		     << "           3: SWAP XOR: igual que el método SWAP pero usando operador xor para" << endl
+		     << "              intercambiar valores." << endl << endl
+		     << "   o    -> Argumento opcional. Si el tercer argumento al invocar el programa es"<< endl
+		     << "           la letra 'o' o la letra 'O', se omite la impresión del arreglos. " << endl
+		     << "           Esto es útil cuando lo que nos interesa es saber cuanto tiempo tarda" << endl
+		     << "           en ejecutarse el programa." << endl << endl
+		     << "Tras la ejecución se imprime en pantalla el tiempo requerido para ejecutar un" << endl
+		     << "programa, en nanosegundos." << endl << endl;
 		exit(1);
 	}		     
 
@@ -135,8 +136,10 @@ int main(int argc, char **argv)
 	cout << endl;
 	cout << "Se definió un arreglo \"A\" que contiene " << n << " elementos." << endl << endl;
 	if (banderaImpresión == true)
+	{
+		cout << "El arreglo A, luce así:" << endl << endl;
 		imprimeArregloInt(A, n, string("A"));
-	
+	}
 	auto start = high_resolution_clock::now();
 	auto end   = high_resolution_clock::now();
 
@@ -161,15 +164,17 @@ int main(int argc, char **argv)
     
     auto time = duration_cast<nanoseconds>(end - start).count();
 
-    cout << endl << "---------------------"<< endl;
+    
     if (banderaImpresión == true)
     {
-    	cout << endl;
+    	cout << endl << "---------------------"<< endl << endl
+    	     << "Tras invertirlo, el arreglo A, luce así:" << endl << endl;
 		imprimeArregloInt(A, n, string("A"));
+		cout << endl << "---------------------"<< endl;
     }
 
-	cout << endl << endl
-		 << "Para invertir el arreglo necesitamos " << time << " nanosegundos."
+	cout << endl
+		 << "Para invertir el arreglo se requirieron " << time << " nanosegundos."
 	     << endl << endl;
 
 	delete[] A;
