@@ -176,10 +176,10 @@ struct arreglo
 		{
 			for (i = 0; i < n-1; ++i)
 				cout << data[i] << ", ";
-			cout << data[i] << "}" << endl;
+			cout << data[i] << "}";
 		}
 		else
-			cout << "}" << endl;
+			cout << "}";
 	}
 };
 
@@ -201,10 +201,10 @@ ostream &operator<<(ostream &os, arreglo<X> &a)
 	{
 		for (i = 0; i < a.n-1; ++i)
 			os << a.data[i] << ", ";
-		os << a.data[i] << "}" << endl;
+		os << a.data[i] << "}";
 	}
 	else
-		os << "}" << endl;
+		os << "}";
 	return os;
 }
 
