@@ -19,17 +19,22 @@ En este caso se utilizan plantillas o *templates* para definir funciones o clase
 
 * ```pruebaArrInt01.cpp```: Ejemplo Monolítico del Programa. Primer ejemplo visto en clase. En el archivo de prueba se incluye la definición de la estructura de un arreglo de enteros, así como el código que utiliza la estructura
 
-* ```arrInt.h```: Parte el ejemplo multi-archivo. En este archivo esta el código que concierne a la estructura ```arrInt```.
+* ```arrInt.h```: Parte de el ejemplo multi-archivo. En este archivo esta el código que concierne a la estructura ```arrInt```.
 
-* ```pruebaArrInt02.cpp```: Parte el ejemplo multi-archivo. En este archivo esta el código que demuestra el uso de la estructura ```arrInt```.
+* ```pruebaArrInt02.cpp```: Parte de el ejemplo multi-archivo. En este archivo esta el código que demuestra el uso de la estructura ```arrInt```.
 
-* ```arreglo.h```: Parte el ejemplo multi-archivo con *templates*. En este archivo esta el código donde se declara la estructura ```arreglo``` usando *templates* y se demuestra como se sobrecarga el operador ```<<```. En esta estructura sobrecargamos el operador ```[]``` para poder acceder a los elementos del arreglo con si fuera un arreglo convencional, con la ventaja de que podemos validar que el índice usado este en los límites del arreglo, *i.e.* si i es un índice para acceder al arreglo, entonces 0 <= i < n. Tambien sobrecargamos ek operdador de asignación ```=```. Además se definen tres tipos de constructores:
+* ```arreglo.h```: Parte de el ejemplo multi-archivo con *templates*. En este archivo esta el código donde se declara la estructura ```arreglo``` usando *templates* y se demuestra como se sobrecarga el operador ```<<```. En esta estructura sobrecargamos el operador ```[]``` para poder acceder a los elementos del arreglo con si fuera un arreglo convencional, con la ventaja de que podemos validar que el índice usado este en los límites del arreglo, *i.e.* si i es un índice para acceder al arreglo, entonces 0 <= i < n. Tambien sobrecargamos ek operdador de asignación ```=```. Además se definen tres tipos de constructores:
 	+ constructor por defecto, que no recibe parámetros 
 	+ constructor que recibe el tamaño del arreglo a crear.
 	+ constructor de copia, que inicializa el arreglo copiando un arreglo que se le pasa como parámetro.
 
+* ```arregloIdx.h```: Este archivo implementa una variante de la estructura ```arreglo.h``` en donde el acceso a los elementos del arreglo se hace de manera indirecta utilizando índices. Útil cuando no es conveniente alterar el orden original del arreglo de manera directa.
+
 * ```pruebaArreglo01.cpp```: Parte del ejemplo multi-archivo con *templates*. En este archivo esta el código que demuestra el uso de la estructura ```arreglo```. En particular demuestra el uso de plantillas (*templates*), el ejercicio que hicimos en clase de encontrar el valor máximo y mínimo de un un arreglo y la sobrecarga del operador ```[]``` y el operador ```<<```.
 * ```pruebaArreglo02.cpp```: Parte del ejemplo multi-archivo con *templates*. En este archivo esta el código que demuestra el uso de la estructura ```arreglo```. En particular se demuestra como se sobrecarga el operador de asignación ```=```, y se definen dos nuevos constructores: el constructor por defecto (que no recibe parámetros) y el constructor de copia que recibe otro objeto de la misma clase y lo usa para inicializar el objeto que se está creando.
+* ```pruebaArregloIdx01.cpp```: Variante del programa  ```pruebaArreglo01.cpp```, que utiliza la estructura ```arregloIdx``` definida en ```arregloIdx.h``` en lugar de la estructura ```arreglo``` de la versión original.
+* ```pruebaArregloIdx02.cpp```: Variante del programa  ```pruebaArreglo02.cpp```, que utiliza la estructura ```arregloIdx``` definida en ```arregloIdx.h``` en lugar de la estructura ```arreglo``` de la versión original.
+
 * ```Makefile```:Archivo que permite automatizar el proceso de compilación de los programas.
 
 * ```LEEME.md```: Este documento.

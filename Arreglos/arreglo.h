@@ -160,7 +160,8 @@ struct arreglo
 	{
 		if (idx < 0 || idx >= (int)n)
 		{
-			cerr << "Error en el operador [] en arreglo: indice fuera de límite;" << endl;
+			cerr << "Error en el operador [] en arreglo: indice " << idx
+			     << " fuera de límite;" << endl;
 			return data[0];
 		}
 		return data[idx];
