@@ -1,5 +1,4 @@
 #include <ArbolBinario.h>
-#include <listaD.h> 
 #include <iostream>
 #include <string>
 
@@ -22,56 +21,81 @@ struct convIntToStr: public convertFromXToString<int>
 	}
 };
 
+
+struct convStrToFloat: public convertFromStringToX<float>
+{
+	float operator() (string s)
+	{
+		return stof(s);
+	}
+};
+
+struct convFloatToStr: public convertFromXToString<float>
+{
+	string operator() (const float &val)
+	{
+		return to_string(val);
+	}
+};
+
 int main(int argc, char **argv)
 {
-	listaD<string> L;
-	arbolBinario<int> A;
-	listaD<string> descArbol;
+	arbolBinario<int> Ai;
+	arbolBinario<float> Af;
+	string descArbol;
+	string Ci = "12,-5,8,@,234,@,@,-56,@,@,2,1,@,@,35,22,@,@,94,@,@";
+	string Cf = "3.26,-12.6,15.4,@,4.45,@,@,-66,@,@,2.1,0.012,@,@,3.4e5,22.2e-2,@,@,94.12,@,@";
 
-	L.pushBack(string("12"));
-	L.pushBack(string("-5"));
-	L.pushBack(string("8"));
-	L.pushBack(string("@"));
-	L.pushBack(string("234"));
-	L.pushBack(string("@"));
-	L.pushBack(string("@"));
-	L.pushBack(string("-56"));
-	L.pushBack(string("@"));
-	L.pushBack(string("@"));
-	L.pushBack(string("2"));
-	L.pushBack(string("1"));
-	L.pushBack(string("@"));
-	L.pushBack(string("@"));
-	L.pushBack(string("35"));
-	L.pushBack(string("22"));
-	L.pushBack(string("@"));
-	L.pushBack(string("@"));
-	L.pushBack(string("94"));
-	L.pushBack(string("@"));
-	L.pushBack(string("@"));
-
-	cout << endl << "Llenamos el árbol con la siguiente cadena: " 
-	     << endl << L << endl << endl;
+	cout << endl << "Llenamos el árbol con la siguiente cadena de números enteros: " 
+	     << endl << Ci << endl << endl;
 
 	convStrToInt cnvS2I;
-	llenaArbolFromListaD(A, L, cnvS2I);
+	llenaArbol(Ai, Ci, ',', cnvS2I);
 
 	cout << "Recorrido inorder:" << endl;
-	A.inorder();
+	Ai.inorder();
 	cout << endl << endl;
 
 	cout << "Recorrido preorder:" << endl;
-	A.preorder();
+	Ai.preorder();
 	cout << endl << endl;
 
 	cout << "Recorrido posorder:" << endl;
-	A.posorder();
+	Ai.posorder();
 	cout << endl << endl;
 
 	convIntToStr cnvI2S;
-	generaDescripcion(A, descArbol, cnvI2S);
+	generaDescripcion(Ai, descArbol, ',', cnvI2S);
 
-	cout << "Generamos una descripción del árbol binario:" << endl
+	cout << "Generamos una descripción del árbol binario de enteros:" << endl
 	     << descArbol << endl << endl;
+
+	cout << "---------------------------------------"
+         << "---------------------------------------" << endl;
+
+	 cout << endl << "Llenamos el árbol con la siguiente cadena de números flotantes: " 
+	     << endl << Cf << endl << endl;
+
+	convStrToFloat cnvS2F;
+	llenaArbol(Af, Cf, ',', cnvS2F);
+
+	cout << "Recorrido inorder:" << endl;
+	Af.inorder();
+	cout << endl << endl;
+
+	cout << "Recorrido preorder:" << endl;
+	Af.preorder();
+	cout << endl << endl;
+
+	cout << "Recorrido posorder:" << endl;
+	Af.posorder();
+	cout << endl << endl;
+
+	convFloatToStr cnvF2S;
+	generaDescripcion(Af, descArbol, ',', cnvF2S);
+
+	cout << "Generamos una descripción del árbol binario de enteros:" << endl
+	     << descArbol << endl << endl;
+
 	return 0;
 }

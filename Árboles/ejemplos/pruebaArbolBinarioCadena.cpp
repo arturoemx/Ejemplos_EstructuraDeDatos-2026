@@ -4,22 +4,6 @@
 
 using namespace std;
 
-struct convStrToStrX: public convertFromStringToX<string>
-{
-	string operator() (string s)
-	{
-		return s;
-	}
-};
-
-struct convStrXToStr: public convertFromXToString<string>
-{
-	string operator() (const string &s)
-	{
-		return s;
-	}
-};
-
 int main(int argc, char **argv)
 {
 	string C = "C,E,F,@,H,@,@,B,@,@,G,A,@,@,N,J,@,@,K,@,@";
@@ -30,8 +14,7 @@ int main(int argc, char **argv)
 	cout << endl << "Llenamos el árbol con la siguiente cadena:" << endl
 	     << "\"" << C << "\"" << endl << endl;
 
-	convStrToStrX cnvSSX;
-	llenaArbolFromString(A, C, ',', cnvSSX);
+	llenaArbol(A, C, ',');
 
 	cout << endl << screenSep << endl;
 
@@ -53,8 +36,7 @@ int main(int argc, char **argv)
 
 	cout << endl << screenSep << endl;
 
-	convStrXToStr cnvSXS;
-	generaDescripcion(A, descArbol, ",", cnvSXS);
+	generaDescripcion(A, descArbol, ",");
 
 	cout << "Generamos una descripción del árbol binario:" << endl
 	     << endl << "\"" << descArbol << "\"" << endl << endl;
